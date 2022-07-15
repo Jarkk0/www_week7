@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -17,7 +18,8 @@ const mongoDB = "mongodb://localhost:27017/testdb";
 mongoose.connect(mongoDB);
 mongoose.Promise = Promise;
 const db = mongoose.connetion;
-db.on("error", console.error.bind(console, "MongoDB connection error"));
+//db.on("error", err => console.error(err));
+//db.on("error", console.error.bind(console, "MongoDB connection error"));
 
 app.use(logger('dev'));
 app.use(express.json());
